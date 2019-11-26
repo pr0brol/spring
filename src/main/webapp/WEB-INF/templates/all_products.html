@@ -8,21 +8,21 @@
 </head>
 
 <body>
-    <h1>Список студентов:</h1>
+    <h1>Список товаров:</h1>
     <table>
         <thead>
         <tr>
             <td>ID</td>
-            <td>First Name</td>
-            <td>Last Name</td>
+            <td>Title</td>
+            <td>Price</td>
         </tr>
         </thead>
         <tbody>
-        <!--/*@thymesVar id="students" type="com.geekbrains.entities.Student"*/-->
-        <tr th:each="s : ${students}">
-                <td>${s.id}</td>
-                <td>${s.firstName}</td>
-                <td>${s.lastName}</td>
+        <!--/*@thymesVar id="products" type="com.geekbrains.entities.Product"*/-->
+        <tr th:each="p : ${products}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.title}"></td>
+            <td th:text="${p.price}"></td>
         </tr>
         </tbody>
     </table>

@@ -10,8 +10,29 @@
 <body>
     <h1>Mod Form Result</h1>
     <br>
-    <span th:text="'Имя студента модифицировали по пути: ' + ${param.studentName}" />
+    <span th:text="'Id товара модифицировали по пути: ' + ${param.productId}" />
     <br>
+    <span th:text="'Наименование товара модифицировали по пути: ' + ${param.productTitle}" />
+    <br>
+    <span th:text="'Цену товара модифицировали по пути: ' + ${param.productPrice}" />
+    <br>
+    <table>
+        <thead>
+        <tr>
+            <td>ID</td>
+            <td>Title</td>
+            <td>Price</td>
+        </tr>
+        </thead>
+        <tbody>
+        <!--/*@thymesVar id="products" type="com.geekbrains.entities.Product"*/-->
+        <tr th:object="${product}">
+            <td th:text="${p.id}"></td>
+            <td th:text="${p.title}"></td>
+            <td th:text="${p.price}"></td>
+        </tr>
+        </tbody>
+    </table>
     <a th:href="@{/}">на Главную страницу</a>
 </body>
 </html>
