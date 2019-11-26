@@ -11,10 +11,14 @@
     <h1>Info page</h1>
 
     <!--/*@thymesVar id="message" type="java.lang.String"*/-->
-    <!--/*@thymesVar id="student" type="com.geekbrains.entities.Student"*/-->
+    <!--/*@thymesVar id="product" type="com.geekbrains.entities.Product"*/-->
 
     <span th:text="${message}" />
     <br>
-    <span th:text="'Students name: ' + ${student.firstName}" />
+    <span th:text="'product id: ' + ${product.id}" />
+    <br>
+    <span th:text="'product title: ' + ${product.title}" />
+    <br>
+    <span th:text="'product price: ' + ${product.price}" />
     </body>
 </html>
