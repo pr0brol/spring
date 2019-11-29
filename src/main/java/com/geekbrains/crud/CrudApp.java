@@ -79,5 +79,17 @@ public class CrudApp {
         user.getProducts().add(product);
         session.getTransaction().commit();
     }
+
+    public void readProductsByName(String name){
+        System.out.println("============\n=== READ ===\n============");
+        session = factory.getCurrentSession();
+        session.beginTransaction();
+        User user = session.createQuery("SELECT user FROM User user WHERE user.name = :name", User.class).setParameter("name", name).getSingleResult();
+        System.out.println("User " + user.getName() + " buy next products: ");
+        for (Product p: user.getProducts()) {
+            System.out.println(p.getTitle());
+        }
+        session.getTransaction().commit();
+    }
 }
 

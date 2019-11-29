@@ -13,7 +13,7 @@ public class MainApp {
 
         crud.addProductIntoBuying("Bob", "milk");
         crud.addProductIntoBuying("Bob", "bread");
-
+        crud.readProductsByName("Alexander");
         crud.finalMethod();
 
     }
