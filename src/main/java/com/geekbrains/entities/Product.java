@@ -1,20 +1,32 @@
 package com.geekbrains.entities;
 
-import java.math.BigDecimal;
+import com.geekbrains.users.User;
 
+import javax.persistence.*;
+import java.util.List;
+
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "title")
     private String title;
-    private BigDecimal price;
 
-    public Product() {
-    }
+    @Column(name = "price")
+    private int price;
 
-    public Product(Long id, String firstName, BigDecimal price) {
-        this.id = id;
-        this.title = firstName;
-        this.price = price;
-    }
+    @ManyToMany
+    @JoinTable(
+            name = "product_buyers",
+            joinColumns = @JoinColumn(name = "product_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id")
+    )
+    private List<User> users;
 
     public Long getId() {
         return id;
@@ -32,12 +44,33 @@ public class Product {
         this.title = title;
     }
 
-    public BigDecimal getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(BigDecimal price) {
+    public void setPrice(int price) {
         this.price = price;
-    }    
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> readers) {
+        this.users = users;
+    }
+
+    public Product() {
+    }
+
+    public Product(String title, int price) {
+        this.title = title;
+        this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Product [id = %d, title = %s, price = %d]", id, title, price);
+    }
 
 }
